@@ -28,3 +28,16 @@ export const searchRecipes = async (query: string) => {
     return [];
   }
 };
+
+export const getParamsRecipe = async (id: string | undefined) => {
+  try {
+    const response = await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
+    );
+    const recipe = response.data;
+    return recipe;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

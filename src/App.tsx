@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { AllRoute } from "./Routes/Route";
 import { Navbar } from "./components/Navbar";
+import "./App.css";
 
 const App: React.FC = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, Input, Button, Center, Flex } from "@chakra-ui/react";
 import { getRandomRecipes, searchRecipes } from "../api/recipeApi";
 import RecipeList from "../components/RecipeList";
-import { Recipe } from "../components/RecipeDetails";
+import { Recipe } from "../Types/types";
 
 const Home: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);

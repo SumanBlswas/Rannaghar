@@ -1,7 +1,9 @@
 import { Box, Image, Text } from "@chakra-ui/react";
-import { Recipe } from "./RecipeDetails";
+import { useNavigate } from "react-router-dom";
+import { Recipe } from "../Types/types";
 
 const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
+  const navigate = useNavigate();
   return (
     <Box
       maxW="xs"
@@ -10,6 +12,9 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
       overflow="hidden"
       boxShadow="lg"
       h={"100%"}
+      onClick={() => navigate(`/recipe_details/${recipe.id}`)}
+      className={"recipe_card"}
+      cursor={"pointer"}
     >
       <Image src={recipe.image} alt={recipe.title} />
       <Box p="4">
