@@ -39,8 +39,6 @@ const RecipeDetails = () => {
     return { __html: htmlString };
   };
 
-  console.log(recipe);
-
   return (
     <Box p={4} maxW="1000px" mx="auto">
       <Flex
@@ -105,9 +103,11 @@ const RecipeDetails = () => {
         </Box>
       </Flex>
 
-      <Text fontSize="lg" mb={4}>
-        <Box dangerouslySetInnerHTML={renderHTML(recipe.summary)} />
-      </Text>
+      <Box
+        fontSize="lg"
+        mb={4}
+        dangerouslySetInnerHTML={renderHTML(recipe.summary)}
+      />
 
       <Divider mb={4} />
 
@@ -116,8 +116,8 @@ const RecipeDetails = () => {
           Ingredients:
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-          {recipe.extendedIngredients.map((ingredient) => (
-            <Box key={ingredient.id} textAlign="center">
+          {recipe.extendedIngredients.map((ingredient, index) => (
+            <Box key={index} textAlign="center">
               <Image
                 src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
                 alt={ingredient.name}
@@ -142,8 +142,8 @@ const RecipeDetails = () => {
               <strong>{instruction.name}</strong>
             </Text>
             <ol>
-              {instruction.steps.map((step) => (
-                <li key={step.number}>
+              {instruction.steps.map((step, index) => (
+                <li key={index}>
                   {step.step}
                   {step.ingredients.length > 0 && (
                     <Box>
@@ -194,7 +194,11 @@ const RecipeDetails = () => {
               <strong>Recommended Wine:</strong>{" "}
               {recipe.winePairing.productMatches[0].title}
             </Text>
-            <Flex placeItems={"center"} gap={20}>
+            <Flex
+              placeItems={"center"}
+              gap={{ base: 5, sm: 20 }}
+              justifyContent={"space-between"}
+            >
               <Image
                 src={recipe.winePairing.productMatches[0].imageUrl}
                 alt="Wine"

@@ -19,7 +19,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
       <Image src={recipe.image} alt={recipe.title} />
       <Box p="4">
         <Text fontSize="17.2px" textAlign={"center"} fontWeight="medium" mb="2">
-          {recipe.title.split(" ").splice(0, 5).join(" ").replace("-", " ")}
+          {recipe.title.split(" ").splice(0, 5).join(" ")}
         </Text>
         {/* <VStack align="start" spacing="1" mb="4">
           <Text fontSize="md" fontWeight="bold">

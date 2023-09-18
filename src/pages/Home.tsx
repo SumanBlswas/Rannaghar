@@ -26,19 +26,20 @@ const Home: React.FC = () => {
 
   return (
     <Box>
-      <Center>
+      <Center p={{ base: 5, sm: 0 }}>
         <Flex gap={5} placeItems={"center"}>
           <Input
-            placeholder="Search for recipes..."
+            placeholder={"Search for recipes..."}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             border={"1px solid gray"}
-            p={24}
-            pl={5}
-            pt={7}
-            pb={7}
+            p={{ base: 0, sm: 24 }}
+            pl={{ base: 5, sm: 5 }}
+            pr={{ base: 5, sm: 0 }}
+            pt={{ base: 7, sm: 7 }}
+            pb={{ base: 7, sm: 7 }}
             borderRadius={10}
-            fontSize={"xl"}
+            fontSize={{ base: "lg", sm: "xl" }}
             fontFamily={"mono"}
             fontWeight={"bold"}
           />
