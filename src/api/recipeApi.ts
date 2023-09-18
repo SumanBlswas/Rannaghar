@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // const apiKey = "4c4fa0293ab546dfa186a5b7303c6f0d";
-const apiKey = "b73f92156bd04194ba69158010080215";
+// const apiKey = "b73f92156bd04194ba69158010080215";
+const apiKey = "c5d8a4c11fc1426ea23993ebe8950908";
 
 export const getRandomRecipes = async (number: number) => {
   try {
