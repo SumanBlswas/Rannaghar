@@ -1,5 +1,6 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
+import RecipeCard from "./RecipeCard";
 
 export interface Recipe {
   title: string;
@@ -11,21 +12,17 @@ export interface Recipe {
 
 interface RecipeListProps {
   recipes: Recipe[];
-  onSelect: (recipe: Recipe) => void;
 }
 
-const RecipeList: React.FC<RecipeListProps> = ({ recipes, onSelect }) => {
+const RecipeList: React.FC<RecipeListProps> = ({ recipes }) => {
   return (
-    <Box>
+    <Flex justifyContent={"center"} flexWrap={"wrap"} gap={7}>
       {recipes.map((recipe, index) => (
         <div key={index}>
-          <img src={recipe.image} alt={recipe.title} />
-          <h2>{recipe.title}</h2>
-          <p>{recipe.summary}</p>
-          <button onClick={() => onSelect(recipe)}>View Details</button>{" "}
+          <RecipeCard recipe={recipe} />
         </div>
       ))}
-    </Box>
+    </Flex>
   );
 };
 

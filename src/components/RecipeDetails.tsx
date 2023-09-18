@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 export interface Recipe {
   title: string;
@@ -18,7 +18,7 @@ const RecipeDetails: React.FC<RecipeDetailsProps> = ({ recipe }) => {
     <Box>
       <img src={recipe.image} alt={recipe.title} />
       <h2>{recipe.title}</h2>
-      <p>{recipe.summary}</p>
+      <Text>{recipe.summary}</Text>
       <h3>Ingredients:</h3>
       {recipe.ingredients && recipe.ingredients.length > 0 ? (
         <ul>
