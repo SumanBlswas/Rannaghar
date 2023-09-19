@@ -56,7 +56,11 @@ export const Navbar = () => {
           fontWeight="semibold"
           display={{ base: "none", md: "flex" }}
         >
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+              Home
+            </Text>
+          </Link>
           {isLoggedIn || token ? (
             <Link to="/account">
               <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
@@ -116,15 +120,11 @@ export const Navbar = () => {
                 )}
                 {isLoggedIn || token ? (
                   <Link to="/favourite" onClick={toggleMenu}>
-                    <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
-                      Favourite
-                    </Text>
+                    Favourite
                   </Link>
                 ) : (
                   <Link to="/login" onClick={toggleMenu}>
-                    <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
-                      Favourite
-                    </Text>
+                    Favourite
                   </Link>
                 )}
               </Stack>
