@@ -91,7 +91,9 @@ const Login = () => {
         </Button>
         <Divider my={6} />
         <Link to={"/signup"}>
-          <Text fontFamily={"mono"}>SignUp Now!</Text>
+          <Text fontFamily={"mono"} textAlign={"center"}>
+            SignUp Now!
+          </Text>
         </Link>
       </Box>
     </Box>
