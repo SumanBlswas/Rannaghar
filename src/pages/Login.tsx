@@ -28,7 +28,7 @@ const Login = () => {
     };
     try {
       const sendData = await axios.post(
-        `http://localhost:7000/users/login`,
+        `${import.meta.env.VITE_PORT}/users/login`,
         payload
       );
       if (sendData.status === 200) {

@@ -9,7 +9,7 @@ const Favourite = () => {
   useEffect(() => {
     const getFavRecipes = async () => {
       try {
-        const favRecipe = await axios.get(`http://localhost:7000/fav-recipe`);
+        const favRecipe = await axios.get(`${import.meta.env.VITE_PORT}/fav-recipe`);
         setRecipes(favRecipe.data);
       } catch (error) {
         console.log(error);

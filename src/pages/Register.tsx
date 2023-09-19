@@ -26,7 +26,7 @@ const Signup = () => {
       const data = { name, email, password };
       if (password === conPassword) {
         const user = await axios.post(
-          `http://localhost:7000/users/register`,
+          `${import.meta.env.VITE_PORT}/users/register`,
           data
         );
         if (user.status === 200) {
