@@ -16,10 +16,22 @@ import {
 } from "@chakra-ui/react";
 import { getParamsRecipe } from "../api/recipeApi";
 import { RecipeExtend } from "../Types/types";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import axios from "axios";
 
-const RecipeDetails = () => {
-  const { id } = useParams();
+interface FavoriteRecipe {
+  id: string;
+  title: string;
+  image: string;
+  summary: string;
+  ingredients: [];
+  instructions: [];
+}
+
+const RecipeDetails: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [recipe, setRecipe] = useState<RecipeExtend | null>(null);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
     getParamsRecipe(id)
@@ -29,7 +41,38 @@ const RecipeDetails = () => {
       .catch((error) => {
         console.error("Error fetching recipe details:", error);
       });
+
+    axios
+      .get<FavoriteRecipe[]>(`http://localhost:7000/fav-recipe`)
+      .then((response) => {
+        const favorites = response.data;
+        const isFav = favorites.some((favorite) => favorite.id === id);
+        setIsFavorite(isFav);
+      })
+      .catch((error) => {
+        console.error("Error fetching favorite status:", error);
+      });
   }, [id]);
+
+  const toggleFavorite = async () => {
+    try {
+      if (isFavorite) {
+        await axios.delete(`http://localhost:7000/fav-recipe/${id}`);
+      } else {
+        await axios.post(`http://localhost:7000/fav-recipe`, {
+          id: recipe?.id,
+          title: recipe?.title,
+          image: recipe?.image,
+          summary: recipe?.summary,
+          ingredients: recipe?.extendedIngredients,
+          instructions: recipe?.analyzedInstructions,
+        });
+      }
+      setIsFavorite(!isFavorite);
+    } catch (error) {
+      console.error("Error toggling favorite:", error);
+    }
+  };
 
   if (!recipe) {
     return <Text>Loading...</Text>;
@@ -57,14 +100,28 @@ const RecipeDetails = () => {
             </Badge>
           </Flex>
         </Box>
-        <Box flex="1">
-          <Text fontSize="lg" textAlign={{ base: "left", md: "right" }}>
-            <strong>Ready in:</strong> {recipe.readyInMinutes} minutes
-          </Text>
-          <Text fontSize="lg" textAlign={{ base: "left", md: "right" }}>
-            <strong>Servings:</strong> {recipe.servings}
-          </Text>
-        </Box>
+
+        <Flex gap={5}>
+          <Box>
+            <Button
+              onClick={toggleFavorite}
+              aria-label={
+                isFavorite ? "Remove from favorites" : "Add to favorites"
+              }
+              colorScheme={isFavorite ? "red" : "green"} // Change color based on favorite status
+            >
+              {isFavorite ? <AiFillHeart /> : <AiOutlineHeart />}
+            </Button>
+          </Box>
+          <Box flex="1">
+            <Text fontSize="lg" textAlign={{ base: "left", md: "right" }}>
+              <strong>Ready in:</strong> {recipe.readyInMinutes} minutes
+            </Text>
+            <Text fontSize="lg" textAlign={{ base: "left", md: "right" }}>
+              <strong>Servings:</strong> {recipe.servings}
+            </Text>
+          </Box>
+        </Flex>
       </Flex>
 
       <Flex
