@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     setRecipes(results);
   };
 
-  console.log(searchQuery);
+  // console.log(searchQuery);
 
   return (
     <Box>
