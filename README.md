@@ -59,13 +59,6 @@
 
 ![HomePage](https://github.com/SumanBlswas/Rannaghar/assets/112753516/b193f33b-abb7-4695-97b5-1b9fc2329106)
 
-## Favourite Page :
-
-![Favourite](https://github.com/SumanBlswas/Rannaghar/assets/112753516/20fadec3-26ff-4086-83b6-00883658c295)
-
-## Account Page :
-![Account](https://github.com/SumanBlswas/Rannaghar/assets/112753516/7f5a6164-5bc8-4a9c-aabf-376bccf1b565)
-
 ## Sign-Up Page :
 
 ![SignupPage](https://github.com/SumanBlswas/Rannaghar/assets/112753516/65c49dba-c649-41fa-8ee5-f28d45e673b1)
@@ -74,10 +67,17 @@
 
 ![LoginPage](https://github.com/SumanBlswas/Rannaghar/assets/112753516/d7600bd8-225a-46af-b58d-8cbb62ff0794)
 
+## Account Page :
+
+![Account](https://github.com/SumanBlswas/Rannaghar/assets/112753516/7f5a6164-5bc8-4a9c-aabf-376bccf1b565)
+
 ## Recipe Page :
 
 ![RecipePage](https://github.com/SumanBlswas/Rannaghar/assets/112753516/1c5c7d8b-aae6-44e6-9b31-3d1ca9884666)
 
+## Favourite Page :
+
+![Favourite](https://github.com/SumanBlswas/Rannaghar/assets/112753516/20fadec3-26ff-4086-83b6-00883658c295)
 
 
 ## My Learnings
