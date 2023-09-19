@@ -13,6 +13,8 @@ import {
   SimpleGrid,
   Stack,
   Button,
+  Center,
+  Spinner,
 } from "@chakra-ui/react";
 import { getParamsRecipe } from "../api/recipeApi";
 import { RecipeExtend } from "../Types/types";
@@ -75,7 +77,11 @@ const RecipeDetails: React.FC = () => {
   };
 
   if (!recipe) {
-    return <Text>Loading...</Text>;
+    return (
+      <Center>
+        <Spinner size="xl" color="purple" width={"250px"} h={"250px"} mt={24} />
+      </Center>
+    );
   }
 
   const renderHTML = (htmlString: string) => {
