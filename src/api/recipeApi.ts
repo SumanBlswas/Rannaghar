@@ -9,7 +9,7 @@ export const getRandomRecipes = async (number: number, page: number) => {
   try {
     const offset = (page - 1) * number;
     const response = await axios.get(
-      `https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=${number}&offset=${offset}`
+      `${import.meta.env.VITE_THIRD_PARTY_PORT}/recipes/random?apiKey=${apiKey}&number=${number}&offset=${offset}`
     );
     const recipes = response.data.recipes;
     return recipes;
@@ -27,7 +27,7 @@ export const searchRecipes = async (
   try {
     const offset = (page - 1) * number;
     const response = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${query}&number=${number}&offset=${offset}`
+      `${import.meta.env.VITE_THIRD_PARTY_PORT}/recipes/complexSearch?apiKey=${apiKey}&query=${query}&number=${number}&offset=${offset}`
     );
     const recipes = response.data.results;
     return recipes;
@@ -40,7 +40,7 @@ export const searchRecipes = async (
 export const getParamsRecipe = async (id: string | undefined) => {
   try {
     const response = await axios.get(
-      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
+      `${import.meta.env.VITE_THIRD_PARTY_PORT}/recipes/${id}/information?apiKey=${apiKey}`
     );
     const recipe = response.data;
     return recipe;

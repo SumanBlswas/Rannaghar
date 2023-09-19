@@ -45,7 +45,7 @@ const RecipeDetails: React.FC = () => {
       });
 
     axios
-      .get<FavoriteRecipe[]>(`http://localhost:7000/fav-recipe`)
+      .get<FavoriteRecipe[]>(`${import.meta.env.VITE_PORT}/fav-recipe`)
       .then((response) => {
         const favorites = response.data;
         const isFav = favorites.some((favorite) => favorite.id === id);
@@ -59,9 +59,9 @@ const RecipeDetails: React.FC = () => {
   const toggleFavorite = async () => {
     try {
       if (isFavorite) {
-        await axios.delete(`http://localhost:7000/fav-recipe/${id}`);
+        await axios.delete(`${import.meta.env.VITE_PORT}/fav-recipe/${id}`);
       } else {
-        await axios.post(`http://localhost:7000/fav-recipe`, {
+        await axios.post(`${import.meta.env.VITE_PORT}/fav-recipe`, {
           id: recipe?.id,
           title: recipe?.title,
           image: recipe?.image,
