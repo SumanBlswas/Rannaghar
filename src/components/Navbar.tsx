@@ -10,13 +10,17 @@ import {
   DrawerCloseButton,
   DrawerBody,
   DrawerHeader,
+  Text,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
+import { useLoggedIn } from "../Context/useLoggedIn";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isLoggedIn } = useLoggedIn();
+  const token = localStorage.getItem("token");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -53,8 +57,32 @@ export const Navbar = () => {
           display={{ base: "none", md: "flex" }}
         >
           <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/favourite">Favourite</Link>
+          {isLoggedIn || token ? (
+            <Link to="/account">
+              <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+                Account
+              </Text>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+                Login
+              </Text>
+            </Link>
+          )}
+          {isLoggedIn || token ? (
+            <Link to="/favourite">
+              <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+                Favourite
+              </Text>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+                Favourite
+              </Text>
+            </Link>
+          )}
         </Flex>
       </Flex>
 
@@ -77,12 +105,28 @@ export const Navbar = () => {
                 <Link to="/" onClick={toggleMenu}>
                   Home
                 </Link>
-                <Link to="/login" onClick={toggleMenu}>
-                  Login
-                </Link>
-                <Link to="/favourite" onClick={toggleMenu}>
-                  Favourite
-                </Link>
+                {isLoggedIn || token ? (
+                  <Link to="/account" onClick={toggleMenu}>
+                    Account
+                  </Link>
+                ) : (
+                  <Link to="/login" onClick={toggleMenu}>
+                    Login
+                  </Link>
+                )}
+                {isLoggedIn || token ? (
+                  <Link to="/favourite" onClick={toggleMenu}>
+                    <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+                      Favourite
+                    </Text>
+                  </Link>
+                ) : (
+                  <Link to="/login" onClick={toggleMenu}>
+                    <Text fontSize="xl" fontFamily="mono" rounded={"full"}>
+                      Favourite
+                    </Text>
+                  </Link>
+                )}
               </Stack>
             </DrawerBody>
           </DrawerContent>

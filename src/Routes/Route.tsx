@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import Favourite from "../pages/Favourite";
 import { Button, Center, Text } from "@chakra-ui/react";
 import RecipeDetails from "../components/RecipeDetails";
+import Account from "../pages/Account";
 
 export const AllRoute = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const AllRoute = () => {
       <Route path={"/login"} element={<Login />} />
       <Route path={"/signup"} element={<Register />} />
       <Route path={"/favourite"} element={<Favourite />} />
+      <Route path={"/account"} element={<Account />} />
       <Route path={"/recipe_details/:id"} element={<RecipeDetails />} />
       <Route
         path={"*"}
